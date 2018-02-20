@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>student</title>
+</head>
+<body>
+     <h1>hello student</h1>
+     <p id='debu'></p>
+     <img src="" id='view' />
+     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+     <script type="text/javascript">
+        var img = document.getElementById('view');
+        var debu = document.getElementById('debu');
+         var socket = io();
+         socket.on('streem',(image)=>{
+            img.src = image;
+            //debu.textContent = image
+         })
+     </script>
+</body>
+</html>

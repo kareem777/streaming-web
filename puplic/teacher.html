@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>teacher</title>
+</head>
+<body>
+    <h1>hello teacher</h1>
+    <video id="video"></video>
+    <canvas id="canvas" ></canvas>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+         var video = document.getElementById('video');
+         var canvas = document.getElementById('canvas');
+         var context = canvas.getContext('2d');
+         var socket = io();
+         navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia
+                                || navigator.webkitGetUserMedia || navigator.oGetUserMedia;
+         if(navigator.getUserMedia) {
+            navigator.getUserMedia({video:true,audio:true},working,err);
+            video.play();
+         }
+         function working(blob) {
+            video.src = window.URL.createObjectURL(blob);
+         }
+         function err (er) {
+            console.log(er);
+         }
+         function getvideo() {
+            canvas.height = video.clientHeight;
+            canvas.width = video.clientWidth;
+            context.drawImage(video,0,0);
+            socket.emit('streem',canvas.toDataURL('image/webp'))
+         };
+
+        setInterval(getvideo,0)
+    </script>
+</body>
+</html>
