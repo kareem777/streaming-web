@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-//const expressHB require('express-handlebars');
 const http = require('http');
 const path = require('path');
 var socketIo = require('socket.io')
@@ -17,10 +16,7 @@ var io = socketIo(server);
 io.on('connection',(socket)=>{
   socket.on('streem',(image)=>{
     socket.broadcast.emit('streem',image);
-    //console.log(image);
-    //var url = __dirname + '/uploads/' + Date.now()+'.mb4'
-    //var stream=fs.createWriteStream(url,{encoding: 'base64'},image);
-    
+
   })
 })
 
