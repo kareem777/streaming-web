@@ -22,8 +22,8 @@ io.on('connection',(socket)=>{
 
 app.get('/',(req,res)=>{
   res.send(`
-  <h1>go to </h1><a href='/teacher.html'>teacher panel</a>
-  <h1>go to </h1><a href='/teacher.html'>live streem panel (student)</a>
+  <h1>go to </h1><a href='/teacher.html' target='_blank'>teacher panel</a>
+  <h1>go to </h1><a href='/student.html' target='_blank'>live streem panel (student)</a>
   
   `)
 })
